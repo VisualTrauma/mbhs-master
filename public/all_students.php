@@ -54,5 +54,5 @@ $sql_details = array(
 require('ssp.class.php');
 
 echo json_encode(
-    SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
+    SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, null, 'deleted_at is null' )
 );

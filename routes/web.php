@@ -1,5 +1,7 @@
 <?php
 use App\Student;
+use Carbon\Carbon;
+
 Route::group(['middleware' => 'auth'], function() {
 	Route::resource('users', 'UserController');
 	Route::resource('search', 'SearchController');
@@ -23,10 +25,11 @@ Route::get('all-sections', ['as' => 'sections.all', 'uses' => 'SectionController
 Route::get('all-tve-subjects', ['as' => 'tvesubjects.all', 'uses' => 'SubjectController@fetchAllTve']);
 
 Route::post('show-student', 'StudentController@showStudent');
+Route::post('students/editButton', 'StudentController@editStudent');
 Route::post('login', ['as' => 'login.auth', 'uses' => 'PageController@auth']);
 
 Route::get('home', function() {
-	return view('welcome');
+	return Student::withTrashed()->where('id', 10)->restore();
 });
 
 Route::group(['prefix' => 'reports'], function() {

@@ -10,11 +10,12 @@
         <link rel="icon" href="{{ URL::to('favicon.ico') }}" type="image/x-icon" />
         <!-- END META SECTION -->
         @yield('links')
+        @yield('css')
         <!-- CSS INCLUDE -->
         <link rel="stylesheet" type="text/css" id="theme" href="{{ URL::to('css/theme-serenity-head-light.css') }}"/>
         <!-- EOF CSS INCLUDE -->
     </head>
-    <body class="page-container-boxed">
+    <body class="page-container-boxed @yield('toggled')">
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
 
@@ -105,7 +106,7 @@
             </div>
             <!-- END PAGE CONTENT -->
         </div>
-        <!-- END PAGE CONTAINER -->
+        <!-- END PAGE CONTAINER --> 
         @yield('message-box')
         <!-- MESSAGE BOX-->
         <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">

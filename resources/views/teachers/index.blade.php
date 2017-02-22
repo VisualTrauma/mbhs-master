@@ -1,7 +1,5 @@
 @extends('layouts/main')
 
-
-
 @section('breadcrumb')
 <ul class="breadcrumb">
     <li class="active">Teachers</li>
@@ -17,9 +15,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-
                 <div class="panel-heading">
-                    <h3 class="panel-title">Teachers Information</h3>
+                    <button type="button" class"btn btn-info">sample</button>
                     <button type="button" class="btn btn-info pull-right" data-toggle="modal" onClick="addTeacher()">Add new teacher profile</button>
                 </div>
 
@@ -29,13 +26,13 @@
                         <table class="table table-bordered table-striped table-actions" id="teacher-table">
                             <thead>
                                 <tr>
-                                                    <th>First Name</th>
-                                                    <th>Middle Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Teaching Area</th>
-                                                    <th>Contact No.</th>
-                                                    <th>Actions</th>
-                                                 </tr>
+                                    <th>First Name</th>
+                                    <th>Middle Name</th>
+                                    <th>Last Name</th>
+                                    <th>Teaching Area</th>
+                                    <th>Contact No.</th>
+                                    <th>Actions</th>
+                                    </tr>
                             </thead>
                             <tbody>                                            
                             </tbody>

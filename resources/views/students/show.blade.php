@@ -6,9 +6,6 @@
 </ul>
 @stop
 
-@section('nav-students') active @stop
-
-
 @section('page-content-wrapper')
 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">                    
@@ -39,7 +36,7 @@
 
                                      <div class="form-group">
                                         <label class="col-md-4 col-xs-5 control-label">Requirements</label>
-                                        <div class="col-md-8 col-xs-7 line-height-30">{{ $student->requirements }}</div>
+                                        <div class="col-md-8 col-xs-7 line-height-30">@if($student->form137 == 'on' && $student->birthcertificate == 'on' && $student->id_picture == 'on') Complete @else Incomplete @endif </div>
                                     </div>
 
                                 </div>
@@ -61,7 +58,7 @@
                                     </div> 
                                     <div class="form-group">
                                             <label class="col-md-4 col-xs-1 control-label">Grade Level</label>
-                                            <div class="col-md-8 col-xs-7 line-height-30">{{ $student->year_level }}</div>
+                                            <div class="col-md-8 col-xs-7 line-height-30">{{ $student->grade_level }}</div>
                                         </div>
                                     <div class="form-group">
                                         <label class="col-md-4 col-xs-1 control-label">Gender</label>

@@ -2,10 +2,6 @@
 
 @extends('layouts/main')
 
-@section('theme')
-    <link rel="stylesheet" type="text/css" id="theme" href="{{ URL::to('css/theme-serenity-head-light.css') }}"/>
-@stop
-
 @section('breadcrumb')
 <ul class="breadcrumb">
     <li class="active">Enrollment</li>                    
@@ -275,7 +271,6 @@
                 <h4 class="modal-title" id="myModalLabel2">Available Actions</h4>
             </div>
             <div class="modal-body">
-                <p align="center"><span class="green">-You can-</span></p>
                 <form action="{{ URL::to('show-student') }}" method="post">
                 {{ csrf_field() }}
                     <input id="show" value="" class="hidden" name="selected-id">
@@ -284,6 +279,7 @@
                     </p>
                 </form>
                 <form action="{{ URL::to('students/editButton') }}" method="post">
+                {{ csrf_field() }}
                     <input id="edit" value="" class="hidden" name="selected-id">
                     <p align="center">
                         <button type="submit" class="btn btn-success">Edit Student Information Here</button>
@@ -294,12 +290,6 @@
                     <input id="show" value="" class="hidden" name="selected-id">
                     <p align="center">
                         <button type="submit" class="btn btn-success">Enroll Selected Student Here</button>
-                    </p>
-                </form>
-                <p align="center"><span class="green">-OR-</span></p>
-                <form action="{{ URL::to('students/delete') }}" method="post">
-                    <p align="center">
-                        <button type="submit" class="btn btn-primary">Delete Student Information Here</button>
                     </p>
                 </form>
             </div>

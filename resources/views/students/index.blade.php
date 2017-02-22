@@ -1,7 +1,5 @@
 @extends('layouts/main')
 
-
-
 @section('breadcrumb')
 <ul class="breadcrumb">
     <li class="active">Students</li>                    
@@ -10,15 +8,34 @@
 
 @section('nav-students') active @stop
 
+@section('css')
+<style>
+.alert {
+  float: left;
+  max-width: 350px;
+  width: 100%;
+  margin-right: 20px;
+  line-height: 21px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+}
+</style>
+@stop
+
 @section('page-content-wrapper')
 <!-- PAGE CONTENT WRAPPER -->
 <div class="page-content-wrap">
+@if(session('success'))
+    @include('layouts.success')
+@endif
     <div class="row">
         <div class="col-md-12">
             <form class="form-horizontal">
                 <!-- START DEFAULT DATATABLE -->
                 <div class="panel panel-default">
-                    <div class="panel-heading">                                
+                    <div class="panel-heading">    
                         <h3 class="panel-title">Student Profiles</h3>
                         <ul class="panel-controls">
                             <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
@@ -79,12 +96,9 @@
                     </p>
                     <p align="center"><span class="green">-OR-</span></p>
                 </form>
-                <form action="{{ URL::to('students/delete') }}" method="post">
-                {{ csrf_field() }} {{ method_field('delete') }}
                     <p align="center">
-                        <button type="submit" class="btn btn-primary">Delete Student Information Here</button>
+                        <a href="#" class="mb-control btn btn-primary" data-box="#mb-delete">Delete Student Information Here</a>
                     </p>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -123,7 +137,33 @@ $('.datatable tbody').on('dblclick', 'tr', function () {
             $currentRowData = $clickedRow.row(this).data();
             $('#edit').attr('value', $currentRowData[0]);
             $('#show').attr('value', $currentRowData[0]);
+            $('#form-delete').attr('action', 'students/' + $currentRowData[0]);
             $('#modal-button').trigger('click');
         });
 </script>
+@stop
+
+@section('message-box')
+<!-- MESSAGE BOX-->
+<div class="message-box animated fadeIn" data-sound="alert" id="mb-delete">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title"><span class="fa fa-trash"></span><strong>Student deletion cannot be undone</strong>!</div>
+            <div class="mb-content">
+                <p>If you accidentally clicked delete button, ignore this message and click 'No'</p><br>
+                <p>Clicking yes will permanently delete student record!</p>
+            </div>
+            <div class="mb-footer">
+                <div class="pull-right">
+                    <form method="post" id="form-delete">
+                     {{ csrf_field() }} {{ method_field('delete') }}
+                        <button type="submit" class="btn btn-success btn-lg">Yes</button>
+                        <button class="btn btn-default btn-lg mb-control-close">No</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MESSAGE BOX-->
 @stop

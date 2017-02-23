@@ -97,7 +97,7 @@
                     <div class="col-md-6 col-xs-12">
                         <div class="input-group">                                                                                            
                             <span class="input-group-addon"><span class="fa fa-exclamation"></span></span>
-                            <input type="text" class="form-control" value="@if($student->general_average < 75) Retained @else {{ $student->status }} @endif" name="status"> 
+                            <input type="text" class="form-control" value="@if($student->general_average < 75) Retained @else {{ $student->status }} @endif" name="status" id="status" readonly> 
                         </div>
                         <span class="help-block"></span>
                     </div>
@@ -195,7 +195,7 @@
                     <div class="col-md-6 col-xs-12">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-ticket"></span></span>
-                            <input type="text" class="form-control" name="gen-ave" value="{{ $student->general_average }}">                                            
+                            <input type="text" class="form-control" name="general-average" value="{{ $student->general_average }}" onkeyup="changeStatus(this.value)">                                            
                         </div>
                         <span class="help-block">Ex. 97.25 or 90.5</span>
                     </div>
@@ -210,4 +210,16 @@
         </div>
     </div>
 </div>
+@stop
+
+
+@section('scripts')
+<script>
+function changeStatus(grade) {
+    setTimeout(function(){
+        if(grade < 75) $('#status').val('Retained');
+        else $('#status').val('Passed');
+    }, 1000);  
+}
+</script>
 @stop

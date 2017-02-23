@@ -15,7 +15,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
              $table->increments('id');
-             $table->string('lrn')->nullable();
+             $table->string('lrn')->unique()->nullable();
              $table->string('registration_code')->nullable();
              $table->string('first_name');
              $table->string('middle_name')->nullable();
@@ -29,7 +29,7 @@ class CreateStudentsTable extends Migration
              $table->string('id_picture')->nullable();
              $table->string('guardian_name');
              $table->string('address');
-             $table->string('mobile_number');
+             $table->string('mobile_number')->nullable();
              $table->string('tel_number')->nullable();
              $table->double('general_average', 15, 2);
              $table->string('last_school_attended')->nullable();

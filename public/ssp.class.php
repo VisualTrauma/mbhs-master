@@ -248,7 +248,7 @@ class SSP {
      *  @param  array $columns Column information array
      *  @param  string $whereResult WHERE condition to apply to the result set
      *  @param  string $whereAll WHERE condition to apply to all queries
-     *  @return array          Server-side processing response array
+     *  @return array Server-side processing response array
      */
     static function complex ( $request, $conn, $table, $primaryKey, $columns, $whereResult=null, $whereAll=null )
     {

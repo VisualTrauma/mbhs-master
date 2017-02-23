@@ -29,7 +29,7 @@ Route::post('students/editButton', 'StudentController@editStudent');
 Route::post('login', ['as' => 'login.auth', 'uses' => 'PageController@auth']);
 
 Route::get('home', function() {
-	return Student::withTrashed()->where('id', 10)->restore();
+	return Student::latest()->where('grade_level', 'Grade 10')->take(1)->get();
 });
 
 Route::group(['prefix' => 'reports'], function() {

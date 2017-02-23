@@ -16,7 +16,6 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <button type="button" class"btn btn-info">sample</button>
                     <button type="button" class="btn btn-info pull-right" data-toggle="modal" onClick="addTeacher()">Add new teacher profile</button>
                 </div>
 
@@ -33,15 +32,30 @@
                                     <th>Contact No.</th>
                                     <th>Actions</th>
                                     </tr>
+                                @foreach($teachers as $teacher)
+                                    <tr>
+                                        <td>{{ $teacher->first_name }}</td>
+                                        <td>@if($teacher->middle_name) {{ $teacher->middle_name }} @else  @endif</td>
+                                        <td>{{ $teacher->last_name }}</td>
+                                        <td>{{ $teacher->teaching_area }}</td>
+                                        <td>{{ $teacher->contact_number }}</td>
+                                        <td>
+                                            <button class="btn btn-default btn-rounded btn-sm" onClick="edit_row({{ $teacher->id }});">Edit &nbsp;<span class="fa fa-pencil"></span></button> &nbsp;
+                                            <button class="btn btn-danger btn-rounded btn-sm" onClick="delete_row({{ $teacher->id }});">Delete &nbsp;<span class="fa fa-times"></span>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </thead>
                             <tbody>                                            
                             </tbody>
                         </table>
+                        {{ $teachers->links('vendor.pagination.default') }}
                     </div>                                
                 </div>
             </div>                                                
         </div>
     </div>
+    
     <!-- END RESPONSIVE TABLES -->
 <!-- END PAGE CONTENT WRAPPER -->                                    
 </div>         
@@ -155,128 +169,35 @@
 <script type='text/javascript' src='/js/plugins/noty/layouts/topRight.js'></script>            
 <script type='text/javascript' src='/js/plugins/noty/themes/default.js'></script>
 
-
-<script type="text/javascript">
-function submitForm() {
-    $(".form-teacher").submit(function(e)
-        {
-            var formObj = $(this);
-            var formURL = formObj.attr("action");
-            var formData = new FormData(this);
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                url: formURL,
-                type: 'POST',
-                data:  formData,
-                mimeType:"multipart/form-data",
-                contentType: false,
-                cache: false,
-                processData: false,
-            success: function(data, textStatus, jqXHR)
-            {
-                if (data == 'successfully added') $('#added').click();
-                if (data == 'successfully updated') $('#updated').click();
-                getTeachers();
-                $('#close-modal').click();
-            },
-             error: function(jqXHR, textStatus, errorThrown) 
-             {
-                $('.btn-warning').click();
-             }          
-            });
-            e.preventDefault(); //Prevent Default action. 
-            e.unbind();
-        }); 
-        $(".form-teacher").submit(); //Submit the form
-}
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        getTeachers();
-    });
-
-    function getTeachers() {
-        $.get("{{ URL::to('all-teachers') }}", function(data, status){
-            teacher = data;
-            $('#teacher-table tr').not(':first').remove();
-            var html = "";
-            $.each(data, function(index, teacher){
-                html +=
-                '<tr>' +
-                '<td>' + teacher.first_name + '</td>' +
-                '<td>' + checkMiddleName(teacher.middle_name) + '</td>' +
-                '<td>' + teacher.last_name + '</td>' +
-                '<td>' + teacher.teaching_area + '</td>' +
-                '<td>' + teacher.contact_number + '</td>' +
-                '<td>' + '<button class="btn btn-default btn-rounded btn-sm" onClick="edit_row(' + teacher.id + ');">Edit &nbsp;<span class="fa fa-pencil"></span></button> &nbsp;' +
-                            '<button class="btn btn-danger btn-rounded btn-sm" onClick="delete_row(' + teacher.id + ');">Delete &nbsp;<span class="fa fa-times"></span>' +
-                '</td>' +
-                '</tr>';
-            });
-            $('#teacher-table tr').first().after(html);
-        });
-    }
-</script>
-
 <script type="text/javascript">
     function edit_row(id) {
         var formbody = $('.form-teacher').html();
         $('.form-teacher').html("<input type=\"hidden\" name=\"_method\" value=\"put\">" + formbody); 
         $('.form-teacher').attr('action', 'teachers/' + id);
-
-        $.each(teacher, function(index, detail){
-            if(detail.id == id) {
-                $('#efirst-name').val(detail.first_name);
-                if(detail.middle_name == null) { $('#emiddle-name').val(""); }
-                else { $('#emiddle-name').val(detail.middle_name); }
-                $('#elast-name').val(detail.last_name);
-                $('#eteaching-area').val(detail.teaching_area);
-                $('#econtact-number').val(detail.contact_number);
-                $('.edit-teacher').attr('action', 'teachers/' + detail.id);
-            }
-        });
+        @foreach($teachers as $detail)
+        if({{ $detail->id }} == id) {
+            $('#efirst-name').val(detail.first_name);
+            if(detail.middle_name == null) { $('#emiddle-name').val(""); }
+            else { $('#emiddle-name').val(detail.middle_name); }
+            $('#elast-name').val(detail.last_name);
+            $('#eteaching-area').val(detail.teaching_area);
+            $('#econtact-number').val(detail.contact_number);
+            $('.edit-teacher').attr('action', 'teachers/' + detail.id);
+        }
+        @endforeach
         $('#teacher-modal').click();
     }
 </script>
 
 <script type="text/javascript">
      function delete_row(id) {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $.ajax({
-            url: "/teachers/" + id, type: "delete", success: function(data) {
-                $('.deleted').click();
-                getTeachers();
-            }, error: function(error) {
-                $('.btn-warning').click();
-            }
-        });   
+        
     }
 </script>
 
 <script type="text/javascript">
     function addTeacher() {
-        clearModal();
-        $('div > h4').text('Add new teacher profile');
-        var savebtn = $('#save-teacher');
-        savebtn.text('Add new profile');
-        savebtn.attr('onClick', 'saveTeacher()');
-        $('.form-teacher').attr('action', 'teachers');
-        $('#teacher-modal').click();
-    }
-
-    function saveTeacher() {
-        submitForm();
+        
     }
 </script>
 
@@ -287,15 +208,5 @@ function submitForm() {
         $('#elast-name').val("");
         $('#econtact-number').val("");
    }
-</script>
-
-<script type="text/javascript">
-    function checkMiddleName(middleName) {
-            if(middleName == null) {
-                return "";
-            } else {
-                return middleName;
-            }
-    }
 </script>
 @stop

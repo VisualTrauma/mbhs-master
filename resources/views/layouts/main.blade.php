@@ -7,18 +7,35 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="icon" href="{{ URL::to('favicon.ico') }}" type="image/x-icon" />
         <!-- END META SECTION -->
         @yield('links')
-        @yield('css')
+        <style>
+            .alert {
+                position: fixed;
+                float: left;
+                max-width: 350px;
+                width: 100%;
+                margin-right: 20px;
+                line-height: 21px;
+                bottom: 0;
+                right: 0;
+                z-index: 20;
+            }
+        </style>
         <!-- CSS INCLUDE -->
+        <link rel="stylesheet" type="text/css" href="/noti/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="/noti/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="/noti/css/ns-default.css" />
+		<link rel="stylesheet" type="text/css" href="/noti/css/ns-style-attached.css" />
+        <link rel="stylesheet" type="text/css" href="/noti/css/ns-style-growl.css" />
+		<script src="/noti/js/modernizr.custom.js"></script>
+        <link rel="icon" href="{{ URL::to('favicon.ico') }}" type="image/x-icon" />
         <link rel="stylesheet" type="text/css" id="theme" href="{{ URL::to('css/theme-serenity-head-light.css') }}"/>
         <!-- EOF CSS INCLUDE -->
     </head>
     <body class="page-container-boxed @yield('toggled')">
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
-
             <!-- START PAGE SIDEBAR -->
             <div class="page-sidebar">
                 <!-- START X-NAVIGATION -->
@@ -157,13 +174,25 @@
         <script type="text/javascript" src="{{ URL::to('js/actions.js') }}"></script>
         <!-- END TEMPLATE -->
 
+        <script src="/noti/js/classie.js"></script>
+		<script src="/noti/js/notificationFx.js"></script>
+
         <!-- CDN -->
 
         <script>
             $('#li-modal a').click(function(){
                 $('#modal-id').modal();
             });
-        </script>     
+        </script> 
+
+        @if(session('success'))
+            @include('layouts.success')
+        @endif
+
+        @if(session('errors'))
+            @include('layouts.errors')
+        @endif
+
         @yield('scripts')
     <!-- END SCRIPTS -->
     </body>

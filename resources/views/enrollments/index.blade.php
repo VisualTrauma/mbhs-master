@@ -18,11 +18,11 @@
             <!-- FIRST TAB -->
             <div class="panel panel-default tabs">                            
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Currently Not Enrolled</a></li>
-                    <li><a href="#tab-second" role="tab" data-toggle="tab">Add Student Profile</a></li>
+                    <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Add Student Profile</a></li>
+                    <li><a href="#tab-second" role="tab" data-toggle="tab">Currently Not Enrolled</a></li>
                 </ul>
                 <div class="panel-body tab-content">
-                    <div class="tab-pane active" id="tab-first">
+                    <div class="tab-pane" id="tab-second">
                             <!-- START DEFAULT DATATABLE -->
                         <div class="panel panel-default">
                             <div class="panel-heading">                                
@@ -51,7 +51,7 @@
                     </div> 
 
                     <!-- SECOND TAB -->
-                    <div class="tab-pane" id="tab-second">
+                    <div class="tab-pane active" id="tab-first">
                     <form class="form-horizontal" action="{{ URL::to('students') }}" method="post">                          
                         {{ csrf_field() }}
                         <div class="panel-body form-group-separated">
@@ -77,14 +77,14 @@
                                 </div>
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group @if($errors->first('first-name')) has-error @endif">
                                 <label class="col-md-3 col-xs-12 control-label">First Name</label>
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="fa fa-user"></span></span>
                                         <input type="text" class="form-control" name="first-name">                                            
                                     </div>
-                                    <span class="help-block"></span>
+                                    <span class="help-block">@if($errors->first('first-name')) {{ $errors->first('first-name') }} @endif</span>
                                 </div>
                             </div>
 
@@ -99,14 +99,14 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group @if($errors->first('last-name')) has-error @endif">
                                 <label class="col-md-3 col-xs-12 control-label">Last Name</label>
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="fa fa-user"></span></span>
                                         <input type="text" class="form-control" name="last-name">                                            
                                     </div>
-                                    <span class="help-block"></span>
+                                    <span class="help-block">@if($errors->first('last-name')) {{ $errors->first('last-name') }} @endif</span>
                                 </div>
                             </div>
 
@@ -136,8 +136,8 @@
                                 <label class="col-md-3 col-xs-12 control-label">Status</label>
                                 <div class="col-md-6 col-xs-12">                                                                                            
                                     <select class="form-control select" name="status">
-                                        <option value="passed">Passed</option>
-                                        <option value="retained">Retained</option>
+                                        <option value="Passed">Passed</option>
+                                        <option value="Retained">Retained</option>
                                     </select>
                                     <span class="help-block"></span>
                                 </div>
@@ -188,14 +188,14 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group @if($errors->first('guardian-name')) has-error @endif">
                                 <label class="col-md-3 col-xs-12 control-label">Guardian Name</label>
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="fa fa-info"></span></span>
                                         <input type="text" class="form-control" name="guardian-name">                                            
                                     </div>
-                                    <span class="help-block"></span>
+                                    <span class="help-block">@if($errors->first('guardian-name')) {{ $errors->first('guardian-name') }} @endif</span>
                                 </div>
                             </div>
 
@@ -232,19 +232,19 @@
                                 </div>
                             </div>
 
-                            <div class="form-group" id="general-average">
+                            <div class="form-group @if($errors->first('general-average')) has-error @endif" id="general-average">
                                 <label class="col-md-3 col-xs-12 control-label">General Average</label>
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="fa fa-ticket"></span></span>
-                                        <input type="text" class="form-control" name="gen-ave">                                            
+                                        <input type="text" class="form-control" name="general-average">                                            
                                     </div>
-                                    <span class="help-block">Ex. 97.25 or 90.5</span>
+                                    <span class="help-block">@if($errors->first('general-average')) {{ $errors->first('general-average') }} @else Ex. 97.25 or 90.5 @endif</span>
                                 </div>
                             </div>
                             <br>
                             <button class="btn btn-default">Clear Form</button>                                    
-                            <button class="btn btn-primary pull-right">Submit</button>
+                            <button type="submit" class="btn btn-primary pull-right">Submit</button>
                         </div>
                         </form>
                     </div>                         

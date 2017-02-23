@@ -8,28 +8,9 @@
 
 @section('nav-students') active @stop
 
-@section('css')
-<style>
-.alert {
-  float: left;
-  max-width: 350px;
-  width: 100%;
-  margin-right: 20px;
-  line-height: 21px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index: 10;
-}
-</style>
-@stop
-
 @section('page-content-wrapper')
 <!-- PAGE CONTENT WRAPPER -->
 <div class="page-content-wrap">
-@if(session('success'))
-    @include('layouts.success')
-@endif
     <div class="row">
         <div class="col-md-12">
             <form class="form-horizontal">

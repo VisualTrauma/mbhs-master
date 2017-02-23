@@ -54,45 +54,42 @@ class StudentController extends Controller
 			$last_school = 'none';
 		}
 
-		$general_average = doubleval( $request->input('tel-num') );
+		$general_average = doubleval( $request->input('general-average') );
 
 	          	$rules = array(
 		        	'first-name' => 'required|min:3',
 		            'last-name' => 'required|min:2',
-		            'gender' => 'required',
-		            'birthdate' => 'required',
-		            'status' => 'required',
-		            'grade-level' => 'required',
 		            'guardian-name' => 'required|min:3',
 		            'address' => 'required|min:7',
-		            'mobile-number' => 'required|min:11',
-		            'gen-ave' => 'required|min:1',
+		            'general-average' => 'required|min:1|max:3',
 	            ); 
-
+			
 	       	$this->validate($request, $rules);
 
 	      	$student = new Student();
-        		$student->first_name = $request->input('first-name');
-        		$student->middle_name = $request->input('middle-name');
-        		$student->last_name = $request->input('last-name');
-        		$student->address = $request->input('address');
-        		$student->gender = $request->input('gender');
-        		$student->status = $request->input('status');
-        		$student->grade_level = $request->input('grade-level');
-        		$student->form137 = $request->input('form137');
-        		$student->birth_certificate = $request->input('birth-certificate');
-        		$student->id_picture = $request->input('id_picture');
-        		$student->birthdate = $request->input('birthdate');
-        		$student->general_average = $request->input('gen-ave');
-        		$student->last_school_attended = $request->input('school-last-attended');
-        		$student->lrn = $request->input('lrn');
-        		$student->guardian_name = $request->input('guardian-name');
-        		$student->mobile_number = $request->input('mobile-number');
-        		$student->tel_number = $request->input('tel-number');
-        		$student->year_graduated = $request->input('year-graduated');
-	        	$student->save();
+			$student->first_name = $request->input('first-name');
+			$student->middle_name = $request->input('middle-name');
+			$student->last_name = $request->input('last-name');
+			$student->address = $request->input('address');
+			$student->gender = $request->input('gender');
+			$student->status = $request->input('status');
+			$student->grade_level = $request->input('grade-level');
+			$student->form137 = $request->input('form137');
+			$student->birth_certificate = $request->input('birth-certificate');
+			$student->id_picture = $request->input('id_picture');
+			$student->birthdate = $request->input('birthdate');
+			$student->general_average = $request->input('general-average');
+			$student->last_school_attended = $request->input('school-last-attended');
+			$student->lrn = $request->input('lrn');
+			$student->guardian_name = $request->input('guardian-name');
+			$student->mobile_number = $request->input('mobile-number');
+			$student->tel_number = $request->input('tel-number');
+			$student->year_graduated = $request->input('year-graduated');
+			$student->save();
 
-	        return redirect('students');
+			session(['success' => 'Student successfully added!']);
+
+	        return redirect('enrollments');
 	}
 
 
@@ -127,7 +124,6 @@ class StudentController extends Controller
 		else {
 			$tel_num = 'none';
 		}
-
 		$year_graduate = "";
 
 		if ( $request->input('year-graduated') == null ) { }
@@ -137,28 +133,23 @@ class StudentController extends Controller
 
 		$last_school = "";
 
-		if ( $request->input('last-school') == null ) { }
+		if ( $request->input('school-last-attended') == null ) { }
 		else {
 			$last_school = 'none';
 		}
 
-		$general_average = doubleval( $request->input('tel-num') );
+		$general_average = doubleval( $request->input('general-average') );
 
 			$rules = array(
 				'first-name' => 'required|min:3',
 				'last-name' => 'required|min:2',
-				'gender' => 'required',
-				'birthdate' => 'required',
-				'status' => 'required',
-				'grade-level' => 'required',
 				'guardian-name' => 'required|min:3',
 				'address' => 'required|min:7',
-				'mobile-number' => 'required|min:11',
-				'gen-ave' => 'required|min:1',
+				'general-average' => 'required|min:1|max:3',
 			); 
 
 		$this->validate($request, $rules);
-
+		
 		$student->first_name = $request->input('first-name');
 		$student->middle_name = $request->input('middle-name');
 		$student->last_name = $request->input('last-name');
@@ -170,7 +161,7 @@ class StudentController extends Controller
 		$student->birth_certificate = $request->input('birth-certificate');
 		$student->id_picture = $request->input('id_picture');
 		$student->birthdate = $request->input('birthdate');
-		$student->general_average = $request->input('gen-ave');
+		$student->general_average = $request->input('general-average');
 		$student->last_school_attended = $request->input('school-last-attended');
 		$student->lrn = $request->input('lrn');
 		$student->guardian_name = $request->input('guardian-name');
@@ -178,6 +169,8 @@ class StudentController extends Controller
 		$student->tel_number = $request->input('tel-number');
 		$student->year_graduated = $request->input('year-graduated');
 		$student->save();
+
+		session(['success' => 'Student successfully updated!']);
 
 		return redirect('students/'. $student->id);
 	}

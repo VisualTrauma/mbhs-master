@@ -10,7 +10,8 @@ class TeacherController extends Controller
 {
 	public function index()
 	{
-		return view('teachers/index');
+		$teachers = Teacher::paginate(10);
+		return view('teachers/index', compact('teachers'));
 	}
 
 	public function store(Request $request) {
@@ -32,8 +33,7 @@ class TeacherController extends Controller
 	}
 
 	public function fetchAll() {
-		$teachers = Teacher::all();
-		return Response::json($teachers);  
+		return Teacher::paginate(10);  
 	}
 
 	public function destroy(Teacher $teacher) {

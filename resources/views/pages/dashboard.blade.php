@@ -32,7 +32,16 @@
                  <?php break; ?>
              @endforeach
              </div>
-            <div class="informer informer-default dir-br"><span class="fa fa-check"> Updated {{ Carbon::now()->diffForHumans() }}</span></div>
+             <div class="informer informer-default dir-br"><span class="fa fa-check"> Updated 
+            @foreach($latest as $dates)
+                @foreach($dates as $date)
+                    @if($grade_level->grade_level == $date->grade_level)  {{ $date->created_at->diffForHumans() }}  @endif
+                    
+                 <?php break; ?>
+                @endforeach
+                 <?php continue; ?>
+            @endforeach
+            </span></div>
         </a>                         
     </div>
 @endforeach
@@ -41,19 +50,19 @@
         <div class="widget widget-default widget-carousel">
             <div class="owl-carousel" id="owl-example">
                 <div>                                    
-                    <div class="widget-title">Total Visitors</div>                                                                        
-                    <div class="widget-subtitle">27/08/2014 15:23</div>
-                    <div class="widget-int">3,548</div>
+                    <div class="widget-title">Total Students</div>                                                                        
+                    <div class="widget-subtitle">in the system</div>
+                    <div class="widget-int">{{ $students->count() }}</div>
                 </div>
                 <div>                                    
-                    <div class="widget-title">Returned</div>
-                    <div class="widget-subtitle">Visitors</div>
-                    <div class="widget-int">1,695</div>
+                    <div class="widget-title">Male</div>
+                    <div class="widget-subtitle">Students</div>
+                    <div class="widget-int">{{ $male->count() }}</div>
                 </div>
                 <div>                                    
-                    <div class="widget-title">New</div>
-                    <div class="widget-subtitle">Visitors</div>
-                    <div class="widget-int">1,977</div>
+                    <div class="widget-title">Female</div>
+                    <div class="widget-subtitle">Students</div>
+                    <div class="widget-int">{{ $female->count() }}</div>
                 </div>
             </div>                            
             <div class="widget-controls">                                
@@ -66,15 +75,10 @@
     <div class="col-md-3">
         
         <!-- START WIDGET MESSAGES -->
-        <div class="widget widget-default widget-item-icon" onclick="location.href='pages-messages.html';">
-            <div class="widget-item-left">
-                <span class="fa fa-envelope"></span>
-            </div>                             
-            <div class="widget-data">
-                <div class="widget-int num-count">48</div>
-                <div class="widget-title">New messages</div>
-                <div class="widget-subtitle">In your mailbox</div>
-            </div>      
+        <div class="widget widget-warning widget-padding-sm">
+                <div class="widget-title">School has</div>
+                <div class="widget-int num-count">{{ number_format($average, 2, '.', '') }}</div>
+                <div class="widget-subtitle">Overall Grade Average</div>
             <div class="widget-controls">                                
                 <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
             </div>
@@ -85,14 +89,14 @@
     <div class="col-md-3">
         
         <!-- START WIDGET REGISTRED -->
-        <div class="widget widget-default widget-item-icon" onclick="location.href='pages-address-book.html';">
+        <div class="widget widget-default widget-item-icon">
             <div class="widget-item-left">
                 <span class="fa fa-user"></span>
             </div>
             <div class="widget-data">
-                <div class="widget-int num-count">375</div>
-                <div class="widget-title">Registred users</div>
-                <div class="widget-subtitle">On your website</div>
+                <div class="widget-int num-count">{{ $teachers }}</div>
+                <div class="widget-title">Registered teachers</div>
+                <div class="widget-subtitle">On your system</div>
             </div>
             <div class="widget-controls">                                
                 <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>

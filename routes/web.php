@@ -37,3 +37,7 @@ Route::group(['prefix' => 'reports'], function() {
 	Route::get('teachers-list', 'ReportController@teacherList');
 });
 
+Route::get('sample', function(){
+	return 'sample';
+});
+

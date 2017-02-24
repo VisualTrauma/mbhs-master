@@ -36,3 +36,6 @@ Route::group(['prefix' => 'reports'], function() {
 	Route::get('student-enrollment', 'ReportController@studentEnrollment');
 	Route::get('teachers-list', 'ReportController@teacherList');
 });
+
+
+Delete This Line <<<<<<<<<<<<<<<<<<

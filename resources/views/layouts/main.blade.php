@@ -58,6 +58,9 @@
                      <li class="@yield('nav-dashboard')">
                         <a href="{{ URL::route('dashboard') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
                     </li>
+                     <li class="@yield('nav-summary') hidden">
+                        <a href="{{ URL::route('summary') }}"><span class="fa fa-check-square-o"></span> <span class="xn-text">Enrollment Summary</span></a>
+                    </li>
                     <li class="@yield('nav-start-enrollment')">
                         <a href="{{ URL::route('enrollments.index') }}"><span class="fa fa-info-circle"></span> <span class="xn-text">Enrollment</span></a>
                     </li>
@@ -99,8 +102,9 @@
             <div class="page-content">
 
                 <!-- START X-NAVIGATION VERTICAL -->
-                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-                    <!-- TOGGLE NAVIGATION -->
+                <ul class="x-navigation x-navigation-horizontal x-navigation-panel"> 
+
+                    <!-- TOGGLE NAVIGATION -->  
                     <li>
                        <span style="color: white; font-size: 30px; padding-left: 10px;" id="annoucement">Pre-Enrollment On-Going</span>
                     </li>

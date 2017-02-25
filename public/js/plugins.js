@@ -81,7 +81,7 @@ $(function() {
         //Masked Inputs
         var feMasked = function(){            
             if($("input[class^='mask_']").length > 0){
-                $("input.mask_tin").mask('99-9999999');
+                $("input.mask_year").mask('9999');
                 $("input.mask_ssn").mask('999-99-9999');        
                 $("input.mask_date").mask('9999-99-99');
                 $("input.mask_product").mask('a*-999-a999');

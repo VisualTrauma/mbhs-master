@@ -18,8 +18,9 @@
             <!-- FIRST TAB -->
             <div class="panel panel-default tabs">                            
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Add Student Profile</a></li>
+                    <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Add or Enroll a Student</a></li>
                     <li><a href="#tab-second" role="tab" data-toggle="tab">Currently Not Enrolled</a></li>
+                    <button class="btn btn-info pull-right" onclick="nextProcess()" id="nextBtn">Process Enrollment</button>
                 </ul>
                 <div class="panel-body tab-content">
                     <div class="tab-pane" id="tab-second">
@@ -115,9 +116,9 @@
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                        <input type="text" class="form-control datepicker" value="{{ Carbon::now()->toDateString() }}" name="birthdate">                                            
+                                        <input type="text" class="mask_date form-control" value="{{ Carbon::now()->toDateString() }}" name="birthdate">                                            
                                     </div>
-                                    <span class="help-block">Click on input field to get datepicker</span>
+                                    <span class="help-block">Use a YYYY-MM-DD date format. example: 2017-02-14</span>
                                 </div>
                             </div>
 
@@ -161,7 +162,7 @@
                                         <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
                                         <input type="text" class="mask_year form-control" name="year-graduated">                                            
                                     </div>
-                                    <span class="help-block">Please use a four(4) digit year format. example: 2001</span>
+                                    <span class="help-block">Use a four(4) digit year format. example: 2001</span>
                                 </div>
                             </div>
 
@@ -243,7 +244,6 @@
                                 </div>
                             </div>
                             <br>
-                            <button class="btn btn-default">Clear Form</button>                                    
                             <button type="submit" class="btn btn-primary pull-right">Submit</button>
                         </div>
                         </form>
@@ -301,7 +301,6 @@
 @section('scripts')
 <script type="text/javascript" src="{{ URL::to('js/plugins/maskedinput/jquery.maskedinput.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::to('js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('js/plugins/bootstrap/bootstrap-datepicker.js') }}"></script>                
 <script type="text/javascript" src="{{ URL::to('js/plugins/bootstrap/bootstrap-select.js') }}"></script>
 
 <script>
@@ -327,5 +326,19 @@ $('.datatable tbody').on('dblclick', 'tr', function () {
     $('#show').attr('value', $currentRowData[0]);
     $('#modal-button').trigger('click');
 });
+</script>
+
+<script>
+function nextProcess(value) {
+    var announcement = $('#annoucement'), next = $('#nextBtn');
+    if(announcement.text() == 'Pre-Enrollment On-Going') {
+        announcement.text('Processing Enrollment');
+        next.text('Post Enrollment');
+    } else if(announcement.text() == 'Processing Enrollment')  {
+        announcement.text('Post Enrollment On-Going');
+        next.text('Post Enrollment');
+        next.attr('disabled', 'disabled');
+    }
+}
 </script>
 @stop

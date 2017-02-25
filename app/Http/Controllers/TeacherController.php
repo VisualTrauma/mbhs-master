@@ -11,6 +11,7 @@ class TeacherController extends Controller
 	public function index()
 	{
 		$teachers = Teacher::paginate(10);
+
 		return view('teachers/index', compact('teachers'));
 	}
 
@@ -33,7 +34,14 @@ class TeacherController extends Controller
 	}
 
 	public function fetchAll() {
-		return Teacher::paginate(10);  
+		$q = request('keyword');
+		$teachers = Teacher::where('first_name', 'like', '%'. $q . '%')
+						->orWhere('middle_name', 'like', '%' . $q . '%')
+						->orWhere('last_name', 'like', '%'. $q . '%')
+						->orWhere('teaching_area', 'like', '%'. $q . '%')
+						->orWhere('contact_number', 'like', '%'. $q . '%')->paginate(10);
+
+		return view('teachers/index', compact('teachers'));  
 	}
 
 	public function destroy(Teacher $teacher) {
@@ -56,6 +64,8 @@ class TeacherController extends Controller
 		if($request->input('contact-number') != null) $teacher->contact_number = $request->input('contact-number'); 
 		$teacher->save();
 
-		return 'successfully updated';
+		session(['success' => 'teacher information successfully updated!']);
+
+		return  redirect('teachers');
 	}
 }

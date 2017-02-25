@@ -18,8 +18,8 @@ class CreateEnrollmentsTable extends Migration
             $table->integer('student_id');
             $table->integer('section_id');
             $table->integer('registration_code');
-            $table->integer('grade_level');
-            $table->double('general_average', 3, 2);
+            $table->string('grade_level');
+            $table->double('general_average', 6, 2);
             $table->timestamps();
         });
     }

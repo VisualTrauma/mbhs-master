@@ -16,9 +16,18 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <button type="button" class="btn btn-info pull-right" data-toggle="modal" onClick="addTeacher()">Add new teacher profile</button>
+                <form role="form" action="search-teachers" method="get">
+                    <div class="input-group push-down-10">
+                        <span class="input-group-addon"><span class="fa fa-search"></span></span>
+                        <input type="text" class="form-control" placeholder="Do empty search to show all" name="keyword"/>
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                        <button type="button" class="btn btn-info pull-right" data-toggle="modal" onClick="addTeacher()">Add new teacher profile</button>
+                </form>
+                <h3 class="panel-title">Teachers</h3>
                 </div>
-
                 <div class="panel-body panel-body-table">
 
                     <div class="table-responsive">
@@ -32,24 +41,24 @@
                                     <th>Contact No.</th>
                                     <th>Actions</th>
                                     </tr>
-                                @foreach($teachers as $teacher)
-                                    <tr>
-                                        <td>{{ $teacher->first_name }}</td>
-                                        <td>@if($teacher->middle_name) {{ $teacher->middle_name }} @else  @endif</td>
-                                        <td>{{ $teacher->last_name }}</td>
-                                        <td>{{ $teacher->teaching_area }}</td>
-                                        <td>{{ $teacher->contact_number }}</td>
-                                        <td>
-                                            <button class="btn btn-default btn-rounded btn-sm" onClick="edit_row({{ $teacher->id }});">Edit &nbsp;<span class="fa fa-pencil"></span></button> &nbsp;
-                                            <button class="btn btn-danger btn-rounded btn-sm" onClick="delete_row({{ $teacher->id }});">Delete &nbsp;<span class="fa fa-times"></span>
-                                        </td>
-                                    </tr>
-                                @endforeach
                             </thead>
                             <tbody>                                            
+                            @foreach($teachers as $teacher)
+                                <tr>
+                                    <td>{{ $teacher->first_name }}</td>
+                                    <td>@if($teacher->middle_name) {{ $teacher->middle_name }} @else  @endif</td>
+                                    <td>{{ $teacher->last_name }}</td>
+                                    <td>{{ $teacher->teaching_area }}</td>
+                                    <td>{{ $teacher->contact_number }}</td>
+                                    <td>
+                                        <button class="btn btn-default btn-rounded btn-sm" onClick="edit_row({{ $teacher->id }});">Edit &nbsp;<span class="fa fa-pencil"></span></button> &nbsp;
+                                        <button class="btn btn-danger btn-rounded btn-sm" onClick="delete_row({{ $teacher->id }});">Delete &nbsp;<span class="fa fa-times"></span>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
-                        {{ $teachers->links('vendor.pagination.default') }}
+                            {{ $teachers->appends(['keyword' => request('keyword')])->links('vendor.pagination.default') }}
                     </div>                                
                 </div>
             </div>                                                
@@ -126,10 +135,10 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-exclamation"></span></span>
                                                 <select class="form-control" name="teaching-area" id="eteaching-area">
-                                                    <option>First floor</option>
-                                                    <option>Second floor</option>
-                                                    <option>Third floor</option>
-                                                    <option>Fourth floor</option>
+                                                    <option value="First Floor">First floor</option>
+                                                    <option value="Second Floor">Second floor</option>
+                                                    <option value="Third Floor">Third floor</option>
+                                                    <option value="Fourth Floor">Fourth floor</option>
                                                 </select>                                            
                                             </div>
                                             <span class="help-block text-info">Click on textbox to see other options</span>
@@ -172,20 +181,20 @@
 <script type="text/javascript">
     function edit_row(id) {
         var formbody = $('.form-teacher').html();
+        $('.form-teacher').attr('method', 'post');
         $('.form-teacher').html("<input type=\"hidden\" name=\"_method\" value=\"put\">" + formbody); 
         $('.form-teacher').attr('action', 'teachers/' + id);
         @foreach($teachers as $detail)
-        if({{ $detail->id }} == id) {
-            $('#efirst-name').val(detail.first_name);
-            if(detail.middle_name == null) { $('#emiddle-name').val(""); }
-            else { $('#emiddle-name').val(detail.middle_name); }
-            $('#elast-name').val(detail.last_name);
-            $('#eteaching-area').val(detail.teaching_area);
-            $('#econtact-number').val(detail.contact_number);
-            $('.edit-teacher').attr('action', 'teachers/' + detail.id);
-        }
+            if({{ $detail->id }} == id) {
+                $('#efirst-name').val("{{ $detail->first_name }}");
+                if("{{ $detail->middle_name }}" == "") $('#emiddle-name').val("");
+                else $('#emiddle-name').val("{{ $detail->middle_name }}");
+                $('#elast-name').val("{{ $detail->last_name }}");
+                $('#eteaching-area').val("{{ $detail->teaching_area }}");
+                $('#econtact-number').val("{{ $detail->contact_number }}");
+            } 
         @endforeach
-        $('#teacher-modal').click();
+         $('.form-teacher').submit();
     }
 </script>
 

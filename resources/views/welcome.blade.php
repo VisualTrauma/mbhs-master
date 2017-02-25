@@ -60,7 +60,7 @@
                 </div>
                 <div class="login-footer">
                     <div class="pull-left">
-                        &copy; 2017 Muntinlupa Business High School
+                        &copy; 2017 Muntinlupa Business High School {{ $var }}
                     </div>
                     <div class="pull-right">
                         <a href="#">Contact Developer</a>

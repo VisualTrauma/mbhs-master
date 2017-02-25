@@ -6,6 +6,6 @@ class StudentTableSeeder extends Seeder
 {
     public function run()
     {
-        factory(App\Student::class, 50)->create();
+        factory(App\Student::class, 4000)->create();
     }
 }

@@ -130,7 +130,7 @@
                     <div class="col-md-6 col-xs-12"> 
                         <div class="input-group">                                                                                           
                             <span class="input-group-addon"><span class="fa fa-exclamation"></span></span>
-                            <input type="text" class="form-control" name="grade-level" value="{{ $student->grade_level }}">
+                            <input type="text" class="form-control" name="grade-level" value="{{ $student->grade_level }}" readonly>
                         </div>
                         <span class="help-block"></span>
                     </div>

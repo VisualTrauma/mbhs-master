@@ -544,12 +544,9 @@
 </div>
 @stop
 
-@section('scripts') 
-<link rel='stylesheet' href="{{ URL::to('fullcalendar/fullcalendar.css')}}" />
-<script type="text/javascript" src="js/plugins/bootstrap/bootstrap-timepicker.min.js"></script>
-<script type="text/javascript" src="js/plugins/bootstrap/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="js/plugins/bootstrap/bootstrap-file-input.js"></script>
-<script type="text/javascript" src="js/plugins/bootstrap/bootstrap-select.js"></script>
-<script src="{{ URL::to('fullcalendar/lib/moment.min.js')}}"></script>
-<script src="{{ URL::to('fullcalendar/fullcalendar.js')}}"></script>
+@section('this-page-plugins') 
+<script type="text/javascript" src="/js/plugins/bootstrap/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/js/plugins/bootstrap/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="/js/plugins/bootstrap/bootstrap-file-input.js"></script>
+<script type="text/javascript" src="/js/plugins/bootstrap/bootstrap-select.js"></script>
 @stop

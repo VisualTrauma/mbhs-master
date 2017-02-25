@@ -58,8 +58,8 @@
                      <li class="@yield('nav-dashboard')">
                         <a href="{{ URL::route('dashboard') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
                     </li>
-                    <li class="@yield('nav-enroll')">
-                        <a href="{{ URL::route('enrollments.index') }}"><span class="fa fa-sign-in"></span> <span class="xn-text">Enroll</span></a>
+                    <li class="@yield('nav-start-enrollment')">
+                        <a href="{{ URL::route('enrollments.index') }}"><span class="fa fa-info-circle"></span> <span class="xn-text">Enrollment</span></a>
                     </li>
                      <li class="@yield('nav-students')">
                         <a href="{{ URL::route('students.index') }}"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Students</span></a>
@@ -99,7 +99,10 @@
 
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-                    <!-- TOGGLE NAVIGATION -->
+                    <!-- TOGGLE NAVIGATION -->  
+                    <li>
+                       <span style="color: white; font-size: 30px; padding-left: 10px;" id="annoucement">Pre-Enrollment On-Going</span>
+                    </li>
 
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
@@ -167,6 +170,7 @@
         <script type='text/javascript' src="{{ URL::to('js/plugins/noty/layouts/topLeft.js') }}"></script>
         <script type='text/javascript' src="{{ URL::to('js/plugins/noty/layouts/topRight.js') }}"></script>
         <script type='text/javascript' src="{{ URL::to('js/plugins/noty/themes/default.js') }}"></script>
+        @yield('this-page-plugins')
         <!-- END THIS PAGE PLUGINS-->
 
         <!-- START TEMPLATE -->

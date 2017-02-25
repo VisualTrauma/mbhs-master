@@ -17,10 +17,18 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-
                 <div class="panel-heading">
-                    <h3 class="panel-title">User Accounts</h3>
+                <form role="form" action="search-users" method="get">
+                    <div class="input-group push-down-10">
+                        <span class="input-group-addon"><span class="fa fa-search"></span></span>
+                        <input type="text" class="form-control" placeholder="Do empty search to show all" name="keyword"/>
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
                     <button type="button" class="btn btn-info pull-right" data-toggle="modal" onClick="addUser()">Add new account</button>
+                    <h3 class="panel-title">User Accounts</h3>
                 </div>
 
                 <div class="panel-body panel-body-table">
@@ -29,18 +37,33 @@
                         <table class="table table-bordered" id="user-table">
                             <thead>
                                 <tr>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Designation</th>
-                                                    <th>Access Level</th>
-                                                    <th>Contact No.</th>
-                                                    <th>Username</th>
-                                                    <th>Actions</th>
-                                                 </tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Designation</th>
+                                    <th>Access Level</th>
+                                    <th>Contact No.</th>
+                                    <th>Username</th>
+                                    <th>Actions</th>
+                                </tr>
                             </thead>
                             <tbody>                                            
+                            <@foreach($users as $user)
+                                <tr>
+                                    <td>{{ $user->first_name }}</td>
+                                    <td>@if($user->last_name) {{ $user->last_name }} @else  @endif</td>
+                                    <td>{{ $user->designation }}</td>
+                                    <td>{{ $user->access_level }}</td>
+                                    <td>{{ $user->contact_number }}</td>
+                                    <td>{{ $user->username }}</td>
+                                    <td>
+                                        <button class="btn btn-default btn-rounded btn-sm" onClick="edit_row({{ $user->id }});">Edit &nbsp;<span class="fa fa-pencil"></span></button> &nbsp;
+                                        <button class="btn btn-danger btn-rounded btn-sm" onClick="delete_row({{ $user->id }});">Delete &nbsp;<span class="fa fa-times"></span>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
+                            {{ $users->appends(['keyword' => request('keyword')])->links('vendor.pagination.default') }}
                     </div>                                
                 </div>
             </div>                                                

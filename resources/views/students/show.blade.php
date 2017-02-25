@@ -36,7 +36,7 @@
 
                                      <div class="form-group">
                                         <label class="col-md-4 col-xs-5 control-label">Requirements</label>
-                                        <div class="col-md-8 col-xs-7 line-height-30">@if($student->form137 == 'on' && $student->birthcertificate == 'on' && $student->id_picture == 'on') Complete @else Incomplete @endif </div>
+                                        <div class="col-md-8 col-xs-7 line-height-30">@if($student->form137 == 'on' && $student->birth_certificate == 'on' && $student->id_picture == 'on') Complete @else Incomplete @endif </div>
                                     </div>
 
                                 </div>

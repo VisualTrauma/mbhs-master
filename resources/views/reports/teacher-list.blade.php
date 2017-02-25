@@ -113,7 +113,6 @@
         form.submit();
         form.attr("action", "{{ url('reports/teachers-list') }}");
         form.removeAttr("target");
-
     }
 </script>
 @stop

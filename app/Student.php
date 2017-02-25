@@ -9,6 +9,11 @@ class Student extends Model
 {
     use SoftDeletes;
 
+    public function enrollments()
+    {
+        return $this->hasMany('App\Enrollment', 'student_id');
+    }
+
     public function scopeInitialize($query)
     {
         return $query;

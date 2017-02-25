@@ -29,4 +29,20 @@ class ReportController extends Controller
         $teachers = Teacher::all();
         return view('reports.teacher-list', compact('teachers'));
     }
+
+    public function printStudentEnrollment() {
+        $students = Student::initialize();
+
+        if($gradeLevel = request('grade_level')) {
+            $students->gradeLevel($gradeLevel);
+        }
+
+        if($status = request('status')) {
+            $students->status($status);
+        }
+
+        $students = $students->get();
+
+        return view('reports.print-student-enrollment', compact('students'));
+    }
 }

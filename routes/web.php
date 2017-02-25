@@ -5,7 +5,7 @@ use Carbon\Carbon;
 Route::group(['middleware' => 'auth'], function() {
 	Route::resource('users', 'UserController');
 	Route::resource('search', 'SearchController');
-	Route::resource('subjects', 'SubjectController');	
+	Route::resource('subjects', 'SubjectController');
 	Route::resource('sections', 'SectionController');
 	Route::resource('students', 'StudentController');
 	Route::resource('teachers', 'TeacherController');
@@ -35,4 +35,8 @@ Route::get('home', function() {
 Route::group(['prefix' => 'reports'], function() {
 	Route::get('student-enrollment', 'ReportController@studentEnrollment');
 	Route::get('teachers-list', 'ReportController@teacherList');
+
+	Route::group(['prefix' => 'print'], function() {
+		Route::get('student-enrollment', 'ReportController@printStudentEnrollment');
+	});
 });

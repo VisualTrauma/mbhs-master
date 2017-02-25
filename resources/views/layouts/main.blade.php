@@ -80,12 +80,12 @@
                     <li class="@yield('nav-schedules')">
                         <a  href="{{ URL::route('schedules.index') }}"><span class="fa fa-calendar"></span> <span class="xn-text">Schedules</a>
                     </li>
-                    <li class="xn-title">Others</li>  
+                    <li class="xn-title">Others</li>
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-circle"></span> <span class="xn-text">Reports</span></a>
+                        <a href="#"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">Reports</span></a>
                         <ul>
                             <li class="@yield('nav-enollment')">
-                                <a href="/reports/student-enrollment"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">Customize</span></a>
+                                <a href="/reports/student-enrollment"><span class="fa fa-circle"></span> <span class="xn-text">Student List</span></a>
                             </li>
                         </ul>
                     </li>
@@ -99,7 +99,7 @@
 
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-                    <!-- TOGGLE NAVIGATION -->  
+                    <!-- TOGGLE NAVIGATION -->
 
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
@@ -123,7 +123,7 @@
             </div>
             <!-- END PAGE CONTENT -->
         </div>
-        <!-- END PAGE CONTAINER --> 
+        <!-- END PAGE CONTAINER -->
         @yield('message-box')
         <!-- MESSAGE BOX-->
         <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
@@ -165,7 +165,7 @@
         <script type='text/javascript' src="{{ URL::to('js/plugins/noty/jquery.noty.js') }}"></script>
         <script type='text/javascript' src="{{ URL::to('js/plugins/noty/layouts/topCenter.js') }}"></script>
         <script type='text/javascript' src="{{ URL::to('js/plugins/noty/layouts/topLeft.js') }}"></script>
-        <script type='text/javascript' src="{{ URL::to('js/plugins/noty/layouts/topRight.js') }}"></script>            
+        <script type='text/javascript' src="{{ URL::to('js/plugins/noty/layouts/topRight.js') }}"></script>
         <script type='text/javascript' src="{{ URL::to('js/plugins/noty/themes/default.js') }}"></script>
         <!-- END THIS PAGE PLUGINS-->
 
@@ -183,7 +183,7 @@
             $('#li-modal a').click(function(){
                 $('#modal-id').modal();
             });
-        </script> 
+        </script>
 
         @if(session('success'))
             @include('layouts.success')

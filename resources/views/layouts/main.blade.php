@@ -86,6 +86,7 @@
                         <ul>
                             <li class="@yield('nav-enollment')">
                                 <a href="/reports/student-enrollment"><span class="fa fa-circle"></span> <span class="xn-text">Student List</span></a>
+                                <a href="/reports/teachers-list"><span class="fa fa-circle"></span> <span class="xn-text">Teacher List</span></a>
                             </li>
                         </ul>
                     </li>
@@ -99,7 +100,7 @@
 
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-                    <!-- TOGGLE NAVIGATION -->  
+                    <!-- TOGGLE NAVIGATION -->
                     <li>
                        <span style="color: white; font-size: 30px; padding-left: 10px;" id="annoucement">Pre-Enrollment On-Going</span>
                     </li>

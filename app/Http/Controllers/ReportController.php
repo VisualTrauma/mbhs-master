@@ -26,7 +26,14 @@ class ReportController extends Controller
     }
 
     public function teacherList() {
-        $teachers = Teacher::all();
+
+        $teachers = Teacher::initialize();
+
+        if($teachingArea = request('teaching_area')) {
+            $teachers->teachingArea($teachingArea);
+        }
+
+        $teachers = $teachers->get();
         return view('reports.teacher-list', compact('teachers'));
     }
 
@@ -44,5 +51,16 @@ class ReportController extends Controller
         $students = $students->get();
 
         return view('reports.print-student-enrollment', compact('students'));
+    }
+
+    public function printTeachersList() {
+        $teachers = Teacher::initialize();
+
+        if($teachingArea = request('teaching_area')) {
+            $teachers->teachingArea($teachingArea);
+        }
+
+        $teachers = $teachers->get();
+        return view('reports.print-teachers-list', compact('teachers'));
     }
 }

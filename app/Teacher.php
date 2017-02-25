@@ -10,4 +10,14 @@ class Teacher extends Model
     use SoftDeletes;
 
     protected $hidden = ['password'];
+
+    public function scopeInitialize($query)
+    {
+        return $query;
+    }
+
+    public function scopeTeachingArea($query, $teachingArea)
+    {
+        return $query->where('teaching_area', $teachingArea);
+    }
 }

@@ -35,5 +35,6 @@ Route::group(['prefix' => 'reports'], function() {
 
 	Route::group(['prefix' => 'print'], function() {
 		Route::get('student-enrollment', 'ReportController@printStudentEnrollment');
+		Route::get('teachers-list', 'ReportController@printTeachersList');
 	});
 });

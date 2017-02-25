@@ -518,7 +518,7 @@
 							<div class="col-md-6 col-xs-12">
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-info"></span></span>
-									<input type="text" class="form-control timepicker" name="start-time" id="start-time"/>                                            
+									<input type="text" class="time form-control timepicker" name="start-time" id="start-time" onclick="document.execCommand('selectall',null,false);"/>                                            
 								</div>
 							</div>
 						</div>
@@ -528,7 +528,7 @@
 							<div class="col-md-6 col-xs-12">
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-info"></span></span>
-									<input type="text" class="form-control timepicker" name="end-time" id="end-time"/>                                            
+									<input type="text" class="time form-control timepicker" name="end-time" id="end-time" onclick="document.execCommand('selectall',null,false);"/>                                            
 								</div>
 							</div>
 						</div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Teacher;
 use App\Student;
+use App\Enrollment;
 
 class ReportController extends Controller
 {
@@ -37,6 +38,16 @@ class ReportController extends Controller
         return view('reports.teacher-list', compact('teachers'));
     }
 
+    public function enrollment() {
+        $enrollments = Enrollment::with(['student', 'section'])->get();
+        return view('reports.enrollment', compact('enrollments'));
+    }
+
+    public function printEnrollment($id) {
+        $enrollment = Enrollment::with(['student', 'section'])->find($id);
+        return view('reports.print-assessment', compact('enrollment'));
+    }
+
     public function printStudentEnrollment() {
         $students = Student::initialize();
 
@@ -61,6 +72,6 @@ class ReportController extends Controller
         }
 
         $teachers = $teachers->get();
-        return view('reports.print-teachers-list', compact('teachers'));
+        return view('reports.print-teacher-list', compact('teachers'));
     }
 }

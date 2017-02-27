@@ -12,7 +12,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('schedules', 'ScheduleController');
 	Route::resource('enrollments', 'EnrollmentController');
 	Route::resource('students.enrollments', 'StudentEnrollmentController');
-	Route::get('enroll/{grade_level}', 'EnrollmentController@enroll');	
+	Route::get('enroll', ['as' => 'enroll', 'uses' => 'EnrollmentController@enroll']);	
 	Route::get('summary', ['as' => 'summary','uses' => 'EnrollmentController@summary']);	});
 
 Route::get('/', 'PageController@login');
@@ -29,6 +29,10 @@ Route::get('all-tve-subjects', ['as' => 'tvesubjects.all', 'uses' => 'SubjectCon
 Route::post('show-student', 'StudentController@showStudent');
 Route::post('students/editButton', 'StudentController@editStudent');
 Route::post('login', ['as' => 'login.auth', 'uses' => 'PageController@auth']);
+Route::get('load', function() {
+	return view('pages.load');
+});
+Route::get('checkinserted/{time}', 'EnrollmentController@checkInserted');
 
 Route::group(['prefix' => 'reports'], function() {
 	Route::get('student-enrollment', 'ReportController@studentEnrollment');

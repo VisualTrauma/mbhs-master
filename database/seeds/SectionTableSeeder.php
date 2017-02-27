@@ -19,7 +19,11 @@ class SectionTableSeeder extends Seeder
                 ['order' => 'Section 10', 'name' => 'Lopez-Jaena', 'room' => '110', 'grade_level' => 'Grade 7', 'added_by' => 'Esmeraldo de Guzman'],
                 ['order' => 'Section 11', 'name' => 'Pira', 'room' => '111', 'grade_level' => 'Grade 7', 'added_by' => 'Esmeraldo de Guzman'],
                 ['order' => 'Section 12', 'name' => 'Ponce', 'room' => '112', 'grade_level' => 'Grade 7', 'added_by' => 'Esmeraldo de Guzman'],
-                ['order' => 'Section 14', 'name' => 'Agoncillo', 'room' => '113', 'grade_level' => 'Grade 7', 'added_by' => 'Esmeraldo de Guzman']
+                ['order' => 'Section 13', 'name' => 'Paura', 'room' => '113', 'grade_level' => 'Grade 7', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 14', 'name' => 'Agoncillo', 'room' => '114', 'grade_level' => 'Grade 7', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 15', 'name' => 'Gomez', 'room' => '115', 'grade_level' => 'Grade 7', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 16', 'name' => 'Burgos', 'room' => '116', 'grade_level' => 'Grade 7', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 17', 'name' => 'Zamora', 'room' => '117', 'grade_level' => 'Grade 7', 'added_by' => 'Esmeraldo de Guzman']
             ],
             [
                 ['order' => 'Section 1', 'name' => 'Mercury', 'room' => '201', 'grade_level' => 'Grade 8', 'added_by' => 'Esmeraldo de Guzman'],
@@ -36,6 +40,9 @@ class SectionTableSeeder extends Seeder
                 ['order' => 'Section 12', 'name' => 'Haumea', 'room' => '212', 'grade_level' => 'Grade 8', 'added_by' => 'Esmeraldo de Guzman'],
                 ['order' => 'Section 13', 'name' => 'Makemake', 'room' => '213', 'grade_level' => 'Grade 8', 'added_by' => 'Esmeraldo de Guzman'],
                 ['order' => 'Section 14', 'name' => 'Eris', 'room' => '214', 'grade_level' => 'Grade 8', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 15', 'name' => 'Janssen', 'room' => '215', 'grade_level' => 'Grade 8', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 16', 'name' => 'Galileo', 'room' => '216', 'grade_level' => 'Grade 8', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 17', 'name' => 'Brahe', 'room' => '217', 'grade_level' => 'Grade 8', 'added_by' => 'Esmeraldo de Guzman']
             ],
             [
                 ['order' => 'Section 1', 'name' => 'Narra', 'room' => '101', 'grade_level' => 'Grade 9', 'added_by' => 'Esmeraldo de Guzman'],
@@ -51,7 +58,10 @@ class SectionTableSeeder extends Seeder
                 ['order' => 'Section 11', 'name' => 'Agathis', 'room' => '111', 'grade_level' => 'Grade 9', 'added_by' => 'Esmeraldo de Guzman'],
                 ['order' => 'Section 12', 'name' => 'Parinari', 'room' => '112', 'grade_level' => 'Grade 9', 'added_by' => 'Esmeraldo de Guzman'],
                 ['order' => 'Section 13', 'name' => 'Ficus', 'room' => '113', 'grade_level' => 'Grade 9', 'added_by' => 'Esmeraldo de Guzman'],
-                ['order' => 'Section 14', 'name' => 'Alstonia', 'room' => '114', 'grade_level' => 'Grade 9', 'added_by' => 'Esmeraldo de Guzman']
+                ['order' => 'Section 14', 'name' => 'Alstonia', 'room' => '114', 'grade_level' => 'Grade 9', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 15', 'name' => 'Katmon', 'room' => '115', 'grade_level' => 'Grade 9', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 16', 'name' => 'Bani', 'room' => '116', 'grade_level' => 'Grade 9', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 17', 'name' => 'Ilang-Ilang', 'room' => '117', 'grade_level' => 'Grade 9', 'added_by' => 'Esmeraldo de Guzman']
             ],
             [
                 ['order' => 'Section 1', 'name' => 'Love', 'room' => '201', 'grade_level' => 'Grade 10', 'added_by' => 'Esmeraldo de Guzman'],
@@ -67,7 +77,10 @@ class SectionTableSeeder extends Seeder
                 ['order' => 'Section 11', 'name' => 'Confidence', 'room' => '211', 'grade_level' => 'Grade 10', 'added_by' => 'Esmeraldo de Guzman'],
                 ['order' => 'Section 12', 'name' => 'Comfort', 'room' => '212', 'grade_level' => 'Grade 10', 'added_by' => 'Esmeraldo de Guzman'],
                 ['order' => 'Section 13', 'name' => 'Relief', 'room' => '213', 'grade_level' => 'Grade 10', 'added_by' => 'Esmeraldo de Guzman'],
-                ['order' => 'Section 14', 'name' => 'Fortitude', 'room' => '214', 'grade_level' => 'Grade 10', 'added_by' => 'Esmeraldo de Guzman']
+                ['order' => 'Section 14', 'name' => 'Fortitude', 'room' => '214', 'grade_level' => 'Grade 10', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 15', 'name' => 'Absolute', 'room' => '215', 'grade_level' => 'Grade 10', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 16', 'name' => 'Decisive', 'room' => '216', 'grade_level' => 'Grade 10', 'added_by' => 'Esmeraldo de Guzman'],
+                ['order' => 'Section 17', 'name' => 'Passion', 'room' => '217', 'grade_level' => 'Grade 10', 'added_by' => 'Esmeraldo de Guzman'],
             ]
         ];
 

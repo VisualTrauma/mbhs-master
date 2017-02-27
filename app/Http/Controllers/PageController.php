@@ -32,10 +32,10 @@ class PageController extends Controller
         	}
 
             public function dashboard(){
-                $unenrolled[0] = Student::where('status', '!=', 'Enrolled')->where('grade_level', 'Grade 7')->get();
-                $unenrolled[1] = Student::where('status', '!=', 'Enrolled')->where('grade_level', 'Grade 8')->get();
-                $unenrolled[2] = Student::where('status', '!=', 'Enrolled')->where('grade_level', 'Grade 9')->get();
-                $unenrolled[3] = Student::where('status', '!=', 'Enrolled')->where('grade_level', 'Grade 10')->get();
+                $unenrolled[0] = Student::doesntHave('enrollments')->where('grade_level', 'Grade 7')->get();
+                $unenrolled[1] = Student::doesntHave('enrollments')->where('grade_level', 'Grade 8')->get();
+                $unenrolled[2] = Student::doesntHave('enrollments')->where('grade_level', 'Grade 9')->get();
+                $unenrolled[3] = Student::doesntHave('enrollments')->where('grade_level', 'Grade 10')->get();
                 $latest[0] = Student::latest()->where('grade_level', 'Grade 7')->take(1)->get();
                 $latest[1] = Student::latest()->where('grade_level', 'Grade 8')->take(1)->get();
                 $latest[2] = Student::latest()->where('grade_level', 'Grade 9')->take(1)->get();

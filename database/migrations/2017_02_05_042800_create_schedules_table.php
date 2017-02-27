@@ -18,8 +18,8 @@ class CreateSchedulesTable extends Migration
             $table->integer('section_id')->nullable();
             $table->integer('teacher_id')->nullable();
             $table->integer('subject_id')->nullable();
-            $table->date('start_time')->nullable();
-            $table->date('end_time')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('end_time')->nullable();
             $table->timestamps();
         });
     }

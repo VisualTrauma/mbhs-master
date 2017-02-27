@@ -1,4 +1,3 @@
-<?php use Carbon\Carbon; ?>
 @extends('layouts/main')
 
 @section('toggled') page-navigation-toggled @stop

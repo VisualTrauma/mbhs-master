@@ -30,7 +30,8 @@
             @foreach($count as $grade_level)
                  Grade {{ $grade_level->grade_level }} - Not yet enrolled
                  <?php break; ?>
-             @endforeach
+            @endforeach 
+            
              </div>
              <div class="informer informer-default dir-br"><span class="fa fa-check"> Updated 
             @foreach($latest as $dates)

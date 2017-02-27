@@ -10,6 +10,10 @@
 
 @section('nav-enroll') active @stop
 
+@section('links')
+    <link rel="stylesheet" type="text/css" href="/css/app.css" />
+@stop
+
 @section('page-content-wrapper')
  <!-- PAGE CONTENT WRAPPER -->
 <div class="page-content-wrap">
@@ -20,7 +24,9 @@
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Add or Enroll a Student</a></li>
                     <li><a href="#tab-second" role="tab" data-toggle="tab">Currently Not Enrolled</a></li>
-                    <button class="btn btn-info pull-right" onclick="nextProcess()" id="nextBtn">Process Enrollment</button>
+                    <form action="/load" method="get">
+                        <button class="btn btn-info pull-right" onclick="enroll()" id="nextBtn">Process Enrollment</button>
+                    </form>
                 </ul>
                 <div class="panel-body tab-content">
                     <div class="tab-pane" id="tab-second">
@@ -339,6 +345,12 @@ function nextProcess(value) {
         next.text('Post Enrollment');
         next.attr('disabled', 'disabled');
     }
+}
+</script>
+
+<script>
+function enroll() {
+    $('body').html(" @include('layouts.loading') ");
 }
 </script>
 @stop

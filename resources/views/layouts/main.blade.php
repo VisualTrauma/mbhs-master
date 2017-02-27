@@ -1,3 +1,4 @@
+<?php use Carbon\Carbon; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,6 +35,7 @@
         <!-- EOF CSS INCLUDE -->
     </head>
     <body class="page-container-boxed @yield('toggled')">
+    @yield('loading-animation')
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
             <!-- START PAGE SIDEBAR -->

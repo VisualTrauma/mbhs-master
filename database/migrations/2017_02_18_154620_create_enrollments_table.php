@@ -20,6 +20,7 @@ class CreateEnrollmentsTable extends Migration
             $table->integer('registration_code');
             $table->string('grade_level');
             $table->double('general_average', 6, 2);
+            $table->integer('printed')->nullable()->default(0);
             $table->timestamps();
         });
     }

@@ -34,6 +34,7 @@ class CreateStudentsTable extends Migration
              $table->double('general_average', 15, 2);
              $table->string('last_school_attended')->nullable();
              $table->string('year_graduated')->nullable();
+             $table->integer('enrolled')->nullable()->default(1);
              $table->timestamps();
              $table->softDeletes();
         });

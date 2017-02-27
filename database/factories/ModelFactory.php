@@ -34,7 +34,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 // Student Model Factory
 $factory->define(App\Student::class, function (Faker\Generator $faker) {
 
-    $status = array('Enrolled', 'Retained', 'Passed');
+    $status = array('Retained', 'Passed');
     $onOff = array('on', 'off');
     $gender = array('Male', 'Female');
     $gradeLevel = array('Grade 7', 'Grade 8', 'Grade 9', 'Grade 10');

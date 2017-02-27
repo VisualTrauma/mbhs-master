@@ -94,7 +94,7 @@
                                 <a href="/reports/teachers-list"><span class="fa fa-circle"></span> <span class="xn-text">Teacher List</span></a>
                             </li>
                             <li class="@yield('nav-reports-enrollment')">
-                                <a href="/reports/enrollment"><span class="fa fa-circle"></span> <span class="xn-text">Enrollment</span></a>
+                                <a href="/reports/enrollment"><span class="fa fa-circle"></span> <span class="xn-text">Assessment</span></a>
                             </li>
                         </ul>
                     </li>

@@ -44,11 +44,27 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td width="30%" height="50%">
+                                        <p style="text-align: left; margin-left: 15px">Reg. Code: </p>
+                                    </td>
+                                    <td height="50%">
+                                        <p style="text-align: left; margin-left: 15px">{{ $enrollment->registration_code }}</p>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td width="30%">
                                         <p style="text-align: left; margin-left: 15px">Name: </p>
                                     </td>
                                     <td>
                                         <p style="text-align: left; margin-left: 15px">{{ $enrollment->student->last_name . ', ' . $enrollment->student->last_name . ' ' . $enrollment->student->middle_name}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="30%">
+                                        <p style="text-align: left; margin-left: 15px">Address: </p>
+                                    </td>
+                                    <td>
+                                        <p style="text-align: left; margin-left: 15px">{{ $enrollment->student->address }}</p>
                                     </td>
                                 </tr>
                             </tbody>
@@ -70,6 +86,14 @@
                                 </tr>
                                 <tr>
                                     <td width="30%">
+                                        <p style="text-align: left; margin-left: 15px">General Avg.: </p>
+                                    </td>
+                                    <td>
+                                        <p style="text-align: left; margin-left: 15px">{{ $enrollment->general_average }}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="30%">
                                         <p style="text-align: left; margin-left: 15px">Section: </p>
                                     </td>
                                     <td>
@@ -87,54 +111,6 @@
                             </tbody>
                         </table>
                     </div>
-
-                    <h6 style="text-align: left; margin-top: 20px; margin-left: 20px;">Schedule</h6>
-
-                    <div class="panel-body" style="margin-top:-10px;">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Period</th>
-                                    <th align="center">Subject</th>
-                                    <th align="center">Teacher</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td width="22%">
-                                        <p style="text-align: left; margin-left: 15px">06:15 - 07:00</p>
-                                        <p style="text-align: left; margin-left: 15px">07:00 - 07:45</p>
-                                        <p style="text-align: left; margin-left: 15px">07:45 - 08:30</p>
-                                        <p style="text-align: left; margin-left: 15px">08:30 - 9:30</p>
-                                        <p style="text-align: left; margin-left: 15px">09:30 - 10:00</p>
-                                        <p style="text-align: left; margin-left: 15px">10:00 - 10:45</p>
-                                        <p style="text-align: left; margin-left: 15px">10:45 - 11:30</p>
-                                        <p style="text-align: left; margin-left: 15px">11:30 - 12:15</p>
-                                    </td>
-                                    <td>
-                                        <p style="text-align: left; margin-left: 15px">Mathematics</p>
-                                        <p style="text-align: left; margin-left: 15px">Mathematics</p>
-                                        <p style="text-align: left; margin-left: 15px">Mathematics</p>
-                                        <p style="text-align: left; margin-left: 15px">Mathematics</p>
-                                        <p style="text-align: left; margin-left: 15px">Recess</p>
-                                        <p style="text-align: left; margin-left: 15px">Mathematics</p>
-                                        <p style="text-align: left; margin-left: 15px">Mathematics</p>
-                                        <p style="text-align: left; margin-left: 15px">Mathematics</p>
-                                    </td>
-                                    <td>
-                                        <p style="text-align: left; margin-left: 15px">Ms. Concepcion</p>
-                                        <p style="text-align: left; margin-left: 15px">Ms. Concepcion</p>
-                                        <p style="text-align: left; margin-left: 15px">Ms. Concepcion</p>
-                                        <p style="text-align: left; margin-left: 15px">Ms. Concepcion</p>
-                                        <p style="text-align: left; margin-left: 15px">--------------</p>
-                                        <p style="text-align: left; margin-left: 15px">Ms. Concepcion</p>
-                                        <p style="text-align: left; margin-left: 15px">Ms. Concepcion</p>
-                                        <p style="text-align: left; margin-left: 15px">Ms. Concepcion</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
 
@@ -147,7 +123,9 @@
         <script type="text/javascript" src="{{ URL::to('js/plugins/jquery/jquery.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/plugins/jquery/jquery-ui.min.js') }}"></script>
         <script type="text/javascript">
-
+            $(function() {
+                window.print();
+            });
         </script>
     </body>
 </html>

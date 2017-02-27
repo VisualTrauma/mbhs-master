@@ -39,7 +39,24 @@ class ReportController extends Controller
     }
 
     public function enrollment() {
-        $enrollments = Enrollment::with(['student', 'section'])->get();
+        // $student = Student::where('lrn', request('search'))
+        //     ->orWhere('first_name', request('search'))
+        //     ->orWhere('last_name', request('search'))
+        //     ->get();
+        //
+        // if($student->count() > 0) {
+        //     return $student;
+        //     $enrollments = Enrollment::with(['student', 'section'])->where('lrn', $student->lrn)->get();
+        // }
+
+        if($search = request('search')) {
+            $enrollments = Enrollment::with(['student', 'section'])->whereHas('student', function($q) {
+                    $q->where('lrn', request('search'))->orWhere('first_name', request('search'))->orWhere('last_name', request('search'));
+                })->get();
+        } else {
+            $enrollments = Enrollment::with(['student', 'section'])->get();
+        }
+
         return view('reports.enrollment', compact('enrollments'));
     }
 

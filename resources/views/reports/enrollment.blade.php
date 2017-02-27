@@ -11,7 +11,7 @@
 
 @section('page-content-wrapper')
 <div class="page-title">
-    <h2><span class="fa fa-info-circle"></span> Enrollment <small>101 enrolled</small></h2>
+    <h2><span class="fa fa-info-circle"></span> Assessment <small>101 enrolled</small></h2>
 </div>
 
 
@@ -30,7 +30,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-search"></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Who are you looking for?" name="search" value=""/>
+                                <input type="text" class="form-control" placeholder="Who are you looking for?" name="search" value="@if(request('search')) {{ request('search') }} @endif"/>
                                 <div class="input-group-btn">
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>

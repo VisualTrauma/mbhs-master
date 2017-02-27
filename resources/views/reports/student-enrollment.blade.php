@@ -6,7 +6,8 @@
 </ul>
 @stop
 
-@section('nav-teachers') active @stop
+@section('nav-reports') active @stop
+@section('nav-reports-student') active @stop
 
 @section('page-content-wrapper')
  <!-- PAGE CONTENT WRAPPER -->

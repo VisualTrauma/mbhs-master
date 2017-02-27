@@ -12,7 +12,11 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('schedules', 'ScheduleController');
 	Route::resource('enrollments', 'EnrollmentController');
 	Route::resource('students.enrollments', 'StudentEnrollmentController');
+<<<<<<< HEAD
 	Route::get('enroll', ['as' => 'enroll', 'uses' => 'EnrollmentController@enroll']);	
+=======
+	Route::get('enroll/{grade_level}', 'EnrollmentController@enroll');
+>>>>>>> master
 	Route::get('summary', ['as' => 'summary','uses' => 'EnrollmentController@summary']);	});
 
 Route::get('/', 'PageController@login');
@@ -37,6 +41,8 @@ Route::get('checkinserted/{time}', 'EnrollmentController@checkInserted');
 Route::group(['prefix' => 'reports'], function() {
 	Route::get('student-enrollment', 'ReportController@studentEnrollment');
 	Route::get('teachers-list', 'ReportController@teacherList');
+	Route::get('enrollment', 'ReportController@enrollment');
+	Route::get('enrollment/{id}', 'ReportController@printEnrollment');
 
 	Route::group(['prefix' => 'print'], function() {
 		Route::get('student-enrollment', 'ReportController@printStudentEnrollment');

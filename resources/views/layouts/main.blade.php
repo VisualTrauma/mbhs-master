@@ -86,12 +86,17 @@
                         <a  href="{{ URL::route('schedules.index') }}"><span class="fa fa-calendar"></span> <span class="xn-text">Schedules</a>
                     </li>
                     <li class="xn-title">Others</li>
-                    <li class="xn-openable">
+                    <li class="xn-openable @yield('nav-reports')">
                         <a href="#"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">Reports</span></a>
                         <ul>
-                            <li class="@yield('nav-enollment')">
+                            <li class="@yield('nav-reports-student')">
                                 <a href="/reports/student-enrollment"><span class="fa fa-circle"></span> <span class="xn-text">Student List</span></a>
+                            </li>
+                            <li class="@yield('nav-reports-teacher-list')">
                                 <a href="/reports/teachers-list"><span class="fa fa-circle"></span> <span class="xn-text">Teacher List</span></a>
+                            </li>
+                            <li class="@yield('nav-reports-enrollment')">
+                                <a href="/reports/enrollment"><span class="fa fa-circle"></span> <span class="xn-text">Assessment</span></a>
                             </li>
                         </ul>
                     </li>
@@ -104,9 +109,9 @@
             <div class="page-content">
 
                 <!-- START X-NAVIGATION VERTICAL -->
-                <ul class="x-navigation x-navigation-horizontal x-navigation-panel"> 
+                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
 
-                    <!-- TOGGLE NAVIGATION -->  
+                    <!-- TOGGLE NAVIGATION -->
                     <li>
                        <span style="color: white; font-size: 30px; padding-left: 10px;" id="annoucement">Pre-Enrollment On-Going</span>
                     </li>

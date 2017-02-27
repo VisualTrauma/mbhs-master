@@ -15,6 +15,10 @@
                         <h3 style="text-align: center;">Muntinlupa Business High School</h3>
                         <p style="text-align: center; line-height:5px;">Espeleta St. Buli, Muntinlupa City</p>
                         <p style="text-align: center; line-height:5px;">Telephone No: 850-9479</p>
+                        <hr>
+                        <p style="text-align: left; line-height:5px; margin-left:15px;">Academic Level: {{ request('grade_level') }}</p>
+                        <p style="text-align: left; line-height:5px; margin-left:15px;">Enrollment Status: {{ request('status') }}</p>
+                        <p style="text-align: left; line-height:5px; margin-left:15px;">Total: {{ $students->count() }}</p>
 
                         <div class="panel-body">
                             <table class="table table-bordered">

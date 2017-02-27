@@ -11,7 +11,9 @@ class UserController extends Controller
 {
     public function index()
 	{
-		$users = User::paginate(10);
+
+        $users = User::paginate(10);
+
 		return view('users/index', compact('users'));
 	}
 
@@ -25,7 +27,7 @@ class UserController extends Controller
 	public function store(Request $request) {
 		$rules = [	'first-name' => 'required|min:2',
 			  	'last-name' => 'required|min:2',
-			  	'contact-number' => 'required|min:7',	
+			  	'contact-number' => 'required|min:7',
 			  	'designation' => 'required',
 			  	'username' => 'required|min:3'	];
 
@@ -35,10 +37,10 @@ class UserController extends Controller
 		$user->first_name = $request->input('first-name');
 		$user->last_name = $request->input('last-name');
 		$user->designation = $request->input('designation');
-		$user->access_level = $request->input('access-level'); 
-		$user->contact_number = $request->input('contact-number'); 
-		$user->username = $request->input('username'); 
-		$user->password = bcrypt($request->input('username')); 
+		$user->access_level = $request->input('access-level');
+		$user->contact_number = $request->input('contact-number');
+		$user->username = $request->input('username');
+		$user->password = bcrypt($request->input('username'));
 		$user->save();
 
 		return 'successfully added';
@@ -46,7 +48,7 @@ class UserController extends Controller
 
 	public function fetchAll() {
 		$users = User::all();
-		return Response::json($users);  
+		return Response::json($users);
 	}
 
 
@@ -68,8 +70,8 @@ class UserController extends Controller
 		$user->first_name = $request->input('first-name');
 		$user->last_name = $request->input('last-name');
 		$user->designation = $request->input('designation');
-		$user->access_level = $request->input('access-level'); 
-		$user->contact_number = $request->input('contact-number'); 
+		$user->access_level = $request->input('access-level');
+		$user->contact_number = $request->input('contact-number');
 		$user->username = $request->input('username');
 		$user->save();
 

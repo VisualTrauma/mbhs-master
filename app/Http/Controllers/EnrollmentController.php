@@ -57,7 +57,7 @@ class EnrollmentController extends Controller
 			$counter = 0;
 			$sectionCounter = 0;
 			//actual sectioning of students
-			for($i = 1; $i < $sectionCount; $i++){
+			for($i = 0; $i < $sectionCount; $i++){
 				foreach($grade as $student){
 					set_time_limit(0);
 					if($counter < $i * 60){ 
@@ -66,7 +66,7 @@ class EnrollmentController extends Controller
 						$assignSection = new Enrollment();
 						$assignSection->student_id = $enroll->id;
 						$assignSection->printed = 0;
-						$assignSection->section_id = $i;
+						$assignSection->section_id = $i+1;
 						$assignSection->grade_level = $enroll->grade_level;
 						$assignSection->registration_code = $enroll->registration_code;
 						$assignSection->general_average = $enroll->general_average;
@@ -76,9 +76,6 @@ class EnrollmentController extends Controller
 					} else break; //switch to the next section if current section has reached 60 students
 				}
 			}
-
-			//list of students that was not automatically enrolled (needs to be manually enrolled)
-			$excessStudents = $grade->values()->take($remainder);
 		}
     } 
 

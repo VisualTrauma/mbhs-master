@@ -25,6 +25,7 @@
             
         }
     });
+    
 var date = '{{ Carbon::now()->toDateString() }}';
 setInterval(function() {
     $.ajax({

@@ -12,11 +12,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('schedules', 'ScheduleController');
 	Route::resource('enrollments', 'EnrollmentController');
 	Route::resource('students.enrollments', 'StudentEnrollmentController');
-<<<<<<< HEAD
 	Route::get('enroll', ['as' => 'enroll', 'uses' => 'EnrollmentController@enroll']);	
-=======
-	Route::get('enroll/{grade_level}', 'EnrollmentController@enroll');
->>>>>>> master
+	Route::get('single-enroll', ['as' => 'single.enroll', 'uses' => 'EnrollmentController@singleEnroll']);	
 	Route::get('summary', ['as' => 'summary','uses' => 'EnrollmentController@summary']);	});
 
 Route::get('/', 'PageController@login');

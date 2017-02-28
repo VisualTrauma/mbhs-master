@@ -350,7 +350,7 @@ function nextProcess(value) {
 
 <script>
 function enroll() {
-    $('body').html(" @include('layouts.loading') ");
+    $('html').html(" @include('pages.load') ");
 }
 </script>
 @stop

@@ -1,7 +1,5 @@
 @extends('layouts/main')
 
-
-
 @section('breadcrumb')
 <ul class="breadcrumb">
     <li class="active">Subjects</li>

@@ -22,25 +22,22 @@
             @if($loop->parent->index == $loop->index) 
                 {{ $tilecolor }}
             @else 
-                <?php continue; ?>
+                @continue
                 @endif 
         @endforeach tile-valign">
-            {{ count($count) }}
+            {{ $grade[$loop->index] }}
             <div class="informer informer-default"> 
-            @foreach($count as $grade_level)
-                 Grade {{ $grade_level->grade_level }} - Not yet enrolled
-                 <?php break; ?>
-            @endforeach 
-            
+            @foreach($count as $grade_level) {{ $grade_level->grade_level }} - Not yet enrolled @break @endforeach
+
              </div>
              <div class="informer informer-default dir-br"><span class="fa fa-check"> Updated 
             @foreach($latest as $dates)
                 @foreach($dates as $date)
                     @if($grade_level->grade_level == $date->grade_level)  {{ $date->created_at->diffForHumans() }}  @endif
                     
-                 <?php break; ?>
+                 @break
                 @endforeach
-                 <?php continue; ?>
+                 @continue
             @endforeach
             </span></div>
         </a>                         

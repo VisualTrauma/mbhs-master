@@ -53,10 +53,9 @@
                         <div class="form-group hidden" id="details">                                        
                             <div class="panel panel-default">
                                 <form class="form-horizontal" id="form-enroll" method="get" action="/single-enroll/{{ $grade }}">
-                                <input type="text" class="hidden" name="grade-level" id="grade-level">
                                     <div class="panel-heading" id="remaining">
                                         <h3 class="panel-title"><strong>Quick</strong> Enroll</h3>
-                                        <h3 class="pull-right"><span>0</span> student/s to enroll</h3>
+                                        <h3 class="pull-right"><span>{{ $student->total() }}</span> student/s to enroll</h3>
                                     </div>
                                     <div class="panel-body"> 
                                         <div class="form-group">
@@ -64,7 +63,9 @@
                                             <div class="col-md-6 col-xs-12">                                            
                                                 <div class="input-group" id="registration-code">
                                                     <span class="input-group-addon"><span class="fa fa-info"></span></span>
-                                                    <input class="form-control" name="registration-code" value="" readonly/>
+                                                    @foreach($student as $detail)
+                                                    <input type="text" class="hidden" name="student-id" id="student-id" value="{{ $detail->id }}">
+                                                    <input class="form-control" name="registration-code" value="{{ $detail->registration_code }}" readonly/>
                                                 </div>                                            
                                             </div>
                                         </div>
@@ -74,7 +75,7 @@
                                             <div class="col-md-6 col-xs-12">                                            
                                                 <div class="input-group" id="fullname">
                                                     <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                                    <input class="form-control" name="student-fullname" value="" readonly/>
+                                                    <input class="form-control" value="{{ $detail->first_name . ' ' . $detail->middle_name . ' ' . $detail->last_name}}" readonly/>
                                                 </div>                                            
                                             </div>
                                         </div>
@@ -84,7 +85,8 @@
                                             <div class="col-md-6 col-xs-12">                                            
                                                 <div class="input-group" id="general-average">
                                                     <span class="input-group-addon"><span class="fa fa-ticket"></span></span>
-                                                    <input class="form-control" name="general-average" value="" readonly/>
+                                                    <input class="form-control" name="general-average" value="{{ $detail->general_average }}" readonly/>
+                                                     @endforeach
                                                 </div>                                            
                                             </div>
                                         </div>
@@ -93,7 +95,9 @@
                                             <label class="col-md-3 col-xs-12 control-label">Section</label>
                                             <div class="col-md-6 col-xs-12" id="section">                                                                                            
                                                 <select class="form-control select" data-live-search="true">
-                                                <option></option>
+                                                @foreach($section as $name)
+                                                <option>{{ $name->order }}</option>
+                                                @endforeach
                                                 </select>   
                                             </div>
                                         </div>
@@ -101,6 +105,10 @@
                                 </form>
                                 <div class="panel-footer">
                                     <button class="btn btn-info pull-right">Enroll</button>
+                                    @foreach($section as $gradelevel)
+                                    <button class="btn btn-warning pull-left">Mass Enroll {{ $gradelevel->grade_level }}</button>
+                                    @break
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

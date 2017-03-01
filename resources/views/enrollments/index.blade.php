@@ -24,9 +24,10 @@
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Add or Enroll a Student</a></li>
                     <li><a href="#tab-second" role="tab" data-toggle="tab">Currently Not Enrolled</a></li>
-                    <form action="/load" method="get">
-                        <button class="btn btn-info pull-right" onclick="enroll()" id="nextBtn">Process Enrollment</button>
-                    </form>
+                     <a class="btn btn-danger pull-right" href="/load/Grade 10">Enroll Grade 10</a>
+                    <a class="btn btn-warning pull-right" href="/load/Grade 9">Enroll Grade 9</a>
+                    <a class="btn btn-success pull-right" href="/load/Grade 8">Enroll Grade 8</a> 
+                    <a class="btn btn-info pull-right" href="/load/Grade 7">Enroll Grade 7</a>
                 </ul>
                 <div class="panel-body tab-content">
                     <div class="tab-pane" id="tab-second">
@@ -332,25 +333,5 @@ $('.datatable tbody').on('dblclick', 'tr', function () {
     $('#show').attr('value', $currentRowData[0]);
     $('#modal-button').trigger('click');
 });
-</script>
-
-<script>
-function nextProcess(value) {
-    var announcement = $('#annoucement'), next = $('#nextBtn');
-    if(announcement.text() == 'Pre-Enrollment On-Going') {
-        announcement.text('Processing Enrollment');
-        next.text('Post Enrollment');
-    } else if(announcement.text() == 'Processing Enrollment')  {
-        announcement.text('Post Enrollment On-Going');
-        next.text('Post Enrollment');
-        next.attr('disabled', 'disabled');
-    }
-}
-</script>
-
-<script>
-function enroll() {
-    $('html').html(" @include('pages.load') ");
-}
 </script>
 @stop

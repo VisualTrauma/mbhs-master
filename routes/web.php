@@ -12,9 +12,10 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('schedules', 'ScheduleController');
 	Route::resource('enrollments', 'EnrollmentController');
 	Route::resource('students.enrollments', 'StudentEnrollmentController');
-	Route::get('enroll', ['as' => 'enroll', 'uses' => 'EnrollmentController@enroll']);	
+	Route::get('enroll/{gradeLevel}', ['as' => 'enroll', 'uses' => 'EnrollmentController@enroll']);	
 	Route::get('single-enroll', ['as' => 'single.enroll', 'uses' => 'EnrollmentController@singleEnroll']);	
-	Route::get('summary', ['as' => 'summary','uses' => 'EnrollmentController@summary']);	});
+	Route::get('summary', ['as' => 'summary','uses' => 'EnrollmentController@summary']);
+	Route::get('zero-unenrolled', ['as' => 'zero','uses' => 'PageController@zero']);	});
 
 Route::get('/', 'PageController@login');
 Route::get('login', ['as' => 'login', 'uses' => 'PageController@login']);
@@ -30,10 +31,10 @@ Route::get('all-tve-subjects', ['as' => 'tvesubjects.all', 'uses' => 'SubjectCon
 Route::post('show-student', 'StudentController@showStudent');
 Route::post('students/editButton', 'StudentController@editStudent');
 Route::post('login', ['as' => 'login.auth', 'uses' => 'PageController@auth']);
-Route::get('load', function() {
-	return view('pages.load');
+Route::get('load/{grade}', function($grade) {
+	return view('pages.load', ['grade' => $grade]);
 });
-Route::get('checkinserted/{time}', 'EnrollmentController@checkInserted');
+Route::get('checkinserted/{time}/{grade}', 'EnrollmentController@checkInserted');
 
 Route::group(['prefix' => 'reports'], function() {
 	Route::get('student-enrollment', 'ReportController@studentEnrollment');

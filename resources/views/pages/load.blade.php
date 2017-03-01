@@ -6,7 +6,7 @@
     <div class="wrap hidden">
     <div class="loading">
         <div class="bounceball"></div>
-        <div class="text"><span id="text">0</span> Students Enrolled</div>
+        <div class="text"><span id="text"></span> Checking Unenrolled Student List</div>
         <form action="/summary" method="get" class="hidden"></form>
     </div>
 </div>
@@ -15,27 +15,28 @@
 
 <script>
  $.ajax({
-        url: '/enroll',
-        type: 'get',
-        success: function(response, textStatus, jqXHR) {
-           $('.hidden').submit();
-        },
-        error: function(jqXHR, textStatus, errorThrown){
-            
-        }
-    });
+    url: '/enroll/{{ $grade }}',
+    type: 'get',
+    success: function(response, textStatus, jqXHR) {
+        $('.hidden').submit();
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+        $('.hidden').attr('action', '/zero-unenrolled');
+        $('.hidden').submit();
+    }
+});
     
 var date = '{{ Carbon::now()->toDateString() }}';
 setInterval(function() {
     $.ajax({
-                url: '/checkinserted/' + date,
-                type: 'get',
-                success: function(response, textStatus, jqXHR) {
-                    $( "#text" ).html( response );
-                },
-                error: function(jqXHR, textStatus, errorThrown){
-                }
-            });
+        url: '/checkinserted/' + date + '/{{ $grade }}',
+        type: 'get',
+        success: function(response, textStatus, jqXHR) {
+            $( "#text" ).html( response );
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+        }
+    });
 }, 5000);
 </script>
 

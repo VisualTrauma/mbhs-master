@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Student;
+use App\Subject;
+use App\TveSubject;
 
 class StudentController extends Controller
 {
-    
+
 	public function index()
 	{
 	        return view('students/index');
@@ -62,8 +64,8 @@ class StudentController extends Controller
 		            'guardian-name' => 'required|min:3',
 		            'address' => 'required|min:7',
 		            'general-average' => 'required|min:1|max:3',
-	            ); 
-			
+	            );
+
 	       	$this->validate($request, $rules);
 
 	      	$student = new Student();
@@ -106,7 +108,12 @@ class StudentController extends Controller
 
 	public function show(Student $student)
 	{
-	        return view('students/show', ['student' => $student]);
+        if($student->grade_level == 'Grade 7') {
+            $subjects = Subject::all();
+        } else {
+            $subjects = TveSubject::where('grade_level', $student->grade_level)->get();
+        }
+	    return view('students/show', ['student' => $student, 'subjects' => $subjects]);
 	}
 
 
@@ -146,10 +153,10 @@ class StudentController extends Controller
 				'guardian-name' => 'required|min:3',
 				'address' => 'required|min:7',
 				'general-average' => 'required|min:1|max:3',
-			); 
+			);
 
 		$this->validate($request, $rules);
-		
+
 		$student->first_name = $request->input('first-name');
 		$student->middle_name = $request->input('middle-name');
 		$student->last_name = $request->input('last-name');
@@ -185,7 +192,7 @@ class StudentController extends Controller
 	public function destroy(Student $student) {
 		$student->delete();
 		session(['success' => 'student information successfully deleted!']);
-		
+
 		return redirect('students');
 	}
 
